@@ -1,0 +1,25 @@
+public class ValidAnagram {
+    public static void main(String[] args) {
+        System.out.println(isValidAnagram("anagram", "gramana"));
+        System.out.println(isValidAnagram("rat", "cat"));
+    }
+
+    private static boolean isValidAnagram(String s1, String s2) {
+        if (s1.length() != s2.length()) {
+            return false;
+        }
+
+        int[] freq = new int[26];
+
+        for (int i = 0; i < s1.length(); i++) freq[s1.charAt(i) - 'a']++;
+        for (int j = 0; j < s2.length(); j++) freq[s2.charAt(j) - 'a']--;
+
+        for (int i : freq) {
+            if (i != 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
